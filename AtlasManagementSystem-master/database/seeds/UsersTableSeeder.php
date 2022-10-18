@@ -19,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'under_name_kana'=>'ケイト',
             'mail_address'=>'keito@yahho.jp',
             'sex'=>'1',
-            'birth_day'=>'1999-3-3',
+            'birth_day'=>'1999-03-03',
+            'role'=>'2',
             'password'=>'keitokeito'
         ]);
     }
