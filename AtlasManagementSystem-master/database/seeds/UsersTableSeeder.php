@@ -13,15 +13,15 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('Users')->insert([
-            'over_name'=>'三角',
-            'under_name'=>'毛糸玉',
-            'over_name_kana'=>'ミスミ',
-            'under_name_kana'=>'ケイト',
-            'mail_address'=>'keito@yahho.jp',
+            'over_name'=>'武田',
+            'under_name'=>'慶喜',
+            'over_name_kana'=>'タケダ',
+            'under_name_kana'=>'ヨシノブ',
+            'mail_address'=>'yosinobu@yahho.jp',
             'sex'=>'1',
-            'birth_day'=>'1999-03-03',
+            'birth_day'=>'1999-02-02',
             'role'=>'2',
-            'password'=>'keitokeito'
+            'password'=>bcrypt('yosiyosiyosi'),
         ]);
     }
 }
