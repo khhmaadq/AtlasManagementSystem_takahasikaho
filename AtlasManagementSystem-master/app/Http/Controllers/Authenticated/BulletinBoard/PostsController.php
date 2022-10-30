@@ -16,14 +16,21 @@ use Auth;
 class PostsController extends Controller
 {
     public function show(Request $request){
+        /*①$postsにuserのpostComments（カラム）を取得した値を入れる*/
         $posts = Post::with('user', 'postComments')->get();
+        /*$categoriesにMainCategoryテーブルから取得した値を入れる*/
         $categories = MainCategory::get();
+        /*$likeに新規Like（いいね）を入れる*/
         $like = new Like;
+        /*$post_commentに新規post（投稿）を入れる*/
         $post_comment = new Post;
+        /**もし値が空じゃなかった場合、$requestの値をkeywordとする */
         if(!empty($request->keyword)){
+            /**post_titleカラムと入力された値が一致しているものを取得もしくはpostカラム*/
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+        /**もしくは */
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
