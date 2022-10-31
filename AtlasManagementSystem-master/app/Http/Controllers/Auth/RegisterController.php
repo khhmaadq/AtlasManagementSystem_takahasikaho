@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -87,5 +88,14 @@ class RegisterController extends Controller
             DB::rollback();
             return redirect()->route('loginView');
         }
+    }
+
+    //新規ユーザー情報を保存
+    public function postValidates(PostRequest $request)
+    {
+        //送信されたリクエストは正しい
+        // バリデーション済みデータの取得
+        $validated = $request->validated();
+        return view('auth.login.login',['msg'=>'OK']);
     }
 }
