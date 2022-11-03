@@ -9,7 +9,8 @@
           </div>
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <!--モーダルの確認画面をaタグで記述しているので該当ボタンをaタグで囲う-->
+            <a href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
           </div>
         </div>
 
@@ -66,7 +67,9 @@
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+          <!--モーダルの確認画面をaタグで記述しているので該当ボタンをaタグで囲う-->
+          <a href="/post{{$post->id}}/update" onclick="return confirm('こちらの投稿を更新してもよろしいでしょうか？')">
+          <input type="submit" class="btn btn-primary d-block" value="編集"></a>
         </div>
       </div>
       {{ csrf_field() }}
