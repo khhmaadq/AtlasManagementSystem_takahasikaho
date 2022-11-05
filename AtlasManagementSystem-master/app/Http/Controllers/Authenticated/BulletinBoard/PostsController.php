@@ -64,6 +64,7 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
+    //編集機能
     public function postEdit(Request $request){
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
@@ -72,10 +73,12 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+    //削除機能
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');

@@ -10,7 +10,7 @@
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             <!--モーダルの確認画面をaタグで記述しているので該当ボタンをaタグで囲う-->
-            <a href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+            <a href="/bulletin_board/delete/{$post->id}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
           </div>
         </div>
 
