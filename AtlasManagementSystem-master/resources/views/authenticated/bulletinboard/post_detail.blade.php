@@ -10,7 +10,7 @@
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             <!--モーダルの確認画面をaタグで記述しているので該当ボタンをaタグで囲う-->
-            <a href="/bulletin_board/delete/{$post->id}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+            <a href="/bulletin_board/delete/{{$post->id}}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
           <!--モーダルの確認画面をaタグで記述しているので該当ボタンをaタグで囲う-->
-          <a href="/post{{$post->id}}/update" onclick="return confirm('こちらの投稿を更新してもよろしいでしょうか？')">
+          <a onclick="return confirm('こちらの投稿を更新してもよろしいでしょうか？')">
           <input type="submit" class="btn btn-primary d-block" value="編集"></a>
         </div>
       </div>
