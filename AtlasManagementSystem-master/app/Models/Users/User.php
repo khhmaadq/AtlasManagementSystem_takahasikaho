@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     public function subjects(){
         // リレーションの定義
-        //BelongsToMany:多対多(モデルの場所,中間テーブル,紐づけるカラム)
+        //BelongsToMany:多対多(モデルの場所,中間テーブル,自身の紐づけるカラム,相手の紐づけるカラム)
         return $this->belongsToMany('App\Models\Users\Subjects','subject_users','user_id','subject_id')->withPivot('id');
     }
 

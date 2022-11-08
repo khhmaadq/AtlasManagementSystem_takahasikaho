@@ -17,7 +17,7 @@ class Subjects extends Model
 
     public function users(){
         // リレーションの定義
-        //BelongsToMany:多対多(モデルの場所,中間テーブル,紐づけるカラム)
-        return $this->BelongsToMany('App\Models\Users','subject_users','user_id','subject_id')->withPivot('id');
+        //BelongsToMany:多対多(モデルの場所,中間テーブル,自身の紐づけるカラム,相手の紐づけるカラム)
+        return $this->BelongsToMany('App\Models\Users','subject_users','subject_id','user_id')->withPivot('id');
     }
 }
