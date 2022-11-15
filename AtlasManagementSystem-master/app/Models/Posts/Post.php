@@ -16,15 +16,18 @@ class Post extends Model
     ];
 
     public function user(){
+        //リレーション　belongsTo　多対1
         return $this->belongsTo('App\Models\Users\User');
     }
 
     public function postComments(){
+        //リレーション　hasMany 1対多
         return $this->hasMany('App\Models\Posts\PostComment');
     }
 
     public function subCategories(){
-        // リレーションの定義
+        // リレーションの定義 hasOne　1対1
+        return $this->hasOne('App\Models\Categories\SubCategories');
     }
 
     // コメント数

@@ -17,6 +17,7 @@ class SubCategory extends Model
     }
 
     public function posts(){
-        // リレーションの定義
+        // リレーションの定義 hasOne　1対1
+        return $this->hasOne('App\Model\Posts\Post');
     }
 }

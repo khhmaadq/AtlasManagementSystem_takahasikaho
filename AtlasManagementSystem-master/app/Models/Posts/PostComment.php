@@ -21,6 +21,7 @@ class PostComment extends Model
         return $this->belongsTo('App\Models\Posts\Post');
     }
 
+    //コメントしたユーザー情報を得る
     public function commentUser($user_id){
         return User::where('id', $user_id)->first();
     }

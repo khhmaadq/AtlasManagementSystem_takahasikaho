@@ -79,11 +79,13 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
+    //メインカテゴリー作成
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
+    //コメント新規作成
     public function commentCreate(Request $request){
         PostComment::create([
             'post_id' => $request->post_id,
@@ -93,12 +95,14 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+    //自分の投稿（カテゴリー）
     public function myBulletinBoard(){
         $posts = Auth::user()->posts()->get();
         $like = new Like;
         return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
     }
 
+    //いいねした投稿（カテゴリー）
     public function likeBulletinBoard(){
         $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
         $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
@@ -106,6 +110,7 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
     }
 
+    //いいねボタンの記述
     public function postLike(Request $request){
         Auth::user()->likes()->attach($request->post_id);
         return response()->json();
