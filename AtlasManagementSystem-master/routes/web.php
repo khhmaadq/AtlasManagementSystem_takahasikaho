@@ -53,7 +53,9 @@ Route::group(['middleware' => 'auth'], function(){
             Route::post('/bulletin_board/edit', 'PostsController@postEdit')->name('post.edit');
             //削除
             Route::get('/bulletin_board/delete/{id}', 'PostsController@postDelete')->name('post.delete');
+            //コメント作成
             Route::post('/comment/create', 'PostsController@commentCreate')->name('comment.create');
+            //いいねボタンの記述
             Route::post('/like/post/{id}', 'PostsController@postLike')->name('post.like');
             Route::post('/unlike/post/{id}', 'PostsController@postUnLike')->name('post.unlike');
         });

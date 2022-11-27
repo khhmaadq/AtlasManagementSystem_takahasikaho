@@ -11,10 +11,13 @@
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <div class="mr-5">
-            <!--ここはコメント数の確認-->
-            <p class="c-0"><i class="fa fa-comment"></i><span class="comment_counts{{ $post->id}}"></span></p>
+            <!--コメント数の確認-->
+            <p class="c-0"><i class="fa fa-comment"></i><span class="comment_counts{{ $post->id }}"></span>
+            <!-- モデル（post.php）のpostComments（リレーション）メソッドに飛ばし。そのモデル内で処理された値をカウントする -->
+            {{$post->postComments->count()}}</p>
           </div>
           <div>
+            <!-- いいね数の確認 -->
             @if(Auth::user()->is_Like($post->id))
             <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
             @else
