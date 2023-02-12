@@ -10,8 +10,8 @@
       <p>性別 : @if($user->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
       <p>生年月日 : <span>{{ $user->birth_day }}</span></p>
       <div>選択科目 :
-        @foreach($user->subjects as $subject)
-        <span>{{ $subject->subject }}</span>
+        @foreach($subjects as $subject)
+        <span>{{ $subject->$subject_id }}</span>
         @endforeach
       </div>
       <div class="">

@@ -43,7 +43,10 @@
             </div>
             <div>
                 @if($user->role == 4)
-                <span>選択科目 :</span>
+                <!-- リレーションの値（国語数学英語） as 1個ずつ配列を代入 -->
+                <!-- コントローラーに記述している①のところ -->
+                <span>選択科目 :@foreach($user->subjects as $subjects){{$subjects->subject}}
+                @endforeach</span>
                 @endif
             </div>
         </div>
@@ -88,18 +91,14 @@
                     </div>
                     <div>
                         <label>選択科目</label>
-                        <span>国語</span><input type="radio" name="subjects" value="1" form="userSearchRequest">
-                        <span>数学</span><input type="radio" name="subjects" value="2" form="userSearchRequest">
-                        <span>英語</span><input type="radio" name="subjects" value="3" form="userSearchRequest">
-                        <!--<label style="font-size:13px">国語</label>
-              @foreach($subjects as $subject)
-          <div class="mt-3">
-            <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
-            <label>{{ $subject->subject }}</label>
-          </div>
-          @endforeach-->
+                        <!-- コントローラーに記述している②のところ -->
+                        @foreach($subject as $subject)
+                        <div class="mt-3">
+                        <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
+                        <label>{{ $subject->subject }}</label>
+                        </div>
+                        @endforeach
                     </div>
-                </div>
             </div>
             <div>
                 <input type="reset" value="リセット" form="userSearchRequest">

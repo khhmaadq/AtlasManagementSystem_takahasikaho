@@ -14,20 +14,20 @@ use App\Searchs\SearchResultFactories;
 class UsersController extends Controller
 {
 
-    public function showUsers(Request $request){
+    public function showUsers(Request $request){//プロフィール一覧
         $keyword = $request->keyword;
         $category = $request->category;
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = $request->subjects;// ここで検索時の科目を受け取る(search.blade.php)
+        $subjects = $request->subject;// ①ここで検索時の科目を受け取る(search.blade.php)
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
-        $subjects = Subjects::all();
-        return view('authenticated.users.search', compact('users', 'subjects'));
+        $subject = Subjects::all();//②表示させたい値
+        return view('authenticated.users.search', compact('users', 'subject'));
     }
 
-    public function userProfile($id){
+    public function userProfile($id){//クリックした時
         $user = User::with('subjects')->findOrFail($id);
         $subject_lists = Subjects::all();
         return view('authenticated.users.profile', compact('user', 'subject_lists'));

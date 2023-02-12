@@ -1,11 +1,11 @@
 $(function () {
-  $('.main_categories').click(function () {
+  $('.main_categories').click(function () { //メインカテゴリーをクリックしたときの処理
     var category_id = $(this).attr('category_id');
     $('.category_num' + category_id).slideToggle();
   });
 
   $(document).on('click', '.like_btn', function (e) {
-    e.preventDefault();
+    e.preventDefault();//機能を妨害
     $(this).addClass('un_like_btn');
     $(this).removeClass('like_btn');
     var post_id = $(this).attr('post_id');

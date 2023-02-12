@@ -78,6 +78,7 @@ class RegisterController extends Controller
                 'sex' => $request->sex,
                 'birth_day' => $birth_day,
                 'role' => $request->role,
+                'subject' => $request->subject,//選択科目
                 'password' => bcrypt($request->password)
             ]);
             $user = User::findOrFail($user_get->id);
